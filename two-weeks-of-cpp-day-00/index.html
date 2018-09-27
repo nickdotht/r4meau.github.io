@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="WhatThis is day 00 of my two weeks tour of C++. It’s been a while since I used this language and I feel rusty around it now. So I decided to learn it again, in two weeks but from an intermediate persp">
+<meta name="keywords" content="learning,cpp,competitive programming,twocpp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Two Weeks of C++ - Day 00">
+<meta property="og:url" content="https://rameau.me/two-weeks-of-cpp-day-00/index.html">
+<meta property="og:site_name" content="Nick Rameau&#39;s Den">
+<meta property="og:description" content="WhatThis is day 00 of my two weeks tour of C++. It’s been a while since I used this language and I feel rusty around it now. So I decided to learn it again, in two weeks but from an intermediate persp">
+<meta property="og:updated_time" content="2018-09-21T02:07:51.983Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Two Weeks of C++ - Day 00">
+<meta name="twitter:description" content="WhatThis is day 00 of my two weeks tour of C++. It’s been a while since I used this language and I feel rusty around it now. So I decided to learn it again, in two weeks but from an intermediate persp">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Two Weeks of C++ - Day 00 | Nick Rameau&#39;s Den</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <link rel="canonical" href="two-weeks-of-cpp-day-00/index.html">
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+ <span id="menu">
+ <!-- Commenting this section because I'm already showing the navbar on top of posts -->
+<!--    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/> -->
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/two-weeks-of-cpp-day-01/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/my-linux-configuration/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://rameau.me/two-weeks-of-cpp-day-00/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://rameau.me/two-weeks-of-cpp-day-00/&text=Two Weeks of C++ - Day 00"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://rameau.me/two-weeks-of-cpp-day-00/&title=Two Weeks of C++ - Day 00"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://rameau.me/two-weeks-of-cpp-day-00/&is_video=false&description=Two Weeks of C++ - Day 00"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Two Weeks of C++ - Day 00&body=Check out this article: https://rameau.me/two-weeks-of-cpp-day-00/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://rameau.me/two-weeks-of-cpp-day-00/&title=Two Weeks of C++ - Day 00"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://rameau.me/two-weeks-of-cpp-day-00/&title=Two Weeks of C++ - Day 00"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://rameau.me/two-weeks-of-cpp-day-00/&title=Two Weeks of C++ - Day 00"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://rameau.me/two-weeks-of-cpp-day-00/&title=Two Weeks of C++ - Day 00"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://rameau.me/two-weeks-of-cpp-day-00/&name=Two Weeks of C++ - Day 00&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What"><span class="toc-number">1.</span> <span class="toc-text">What</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why"><span class="toc-number">2.</span> <span class="toc-text">Why</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How"><span class="toc-number">3.</span> <span class="toc-text">How</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Time-management"><span class="toc-number">3.1.</span> <span class="toc-text">Time management</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Good-reading-amp-documenting-habits"><span class="toc-number">3.2.</span> <span class="toc-text">Good reading & documenting habits</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Disclaimer"><span class="toc-number">4.</span> <span class="toc-text">Disclaimer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">5.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        <!-- Commenting this condition because I still want the header to be displayed for posts. -->
+        
+          <header id="header">
+  <a href="/">
+  
+    
+      <div id="logo" style="background-image: url(https://www.gravatar.com/avatar/04188522e784edc72ea9de6f19cd353f);"></div>
+    
+  
+    <div id="title">
+      <h1>Nick Rameau&#39;s Den</h1>
+    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fa fa-bars fa-2x"></i></a>
+      </li>
+       
+        <li><a href="/">Home</a></li>
+       
+        <li><a href="/about/">About</a></li>
+       
+        <li><a href="/archives/">Writing</a></li>
+       
+        <li><a href="/projects/">Projects</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Two Weeks of C++ - Day 00
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Written on</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-07-29T04:40:00.000Z" itemprop="datePublished">07-29-2017</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/competitive-programming/">competitive programming</a>, <a class="tag-link" href="/tags/cpp/">cpp</a>, <a class="tag-link" href="/tags/learning/">learning</a>, <a class="tag-link" href="/tags/twocpp/">twocpp</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="What"><a href="#What" class="headerlink" title="What"></a>What</h2><p>This is day 00 of my two weeks tour of C++. It’s been a while since I used this language and I feel rusty around it now. So I decided to learn it again, in two weeks but from an intermediate perspective. Except this time, I’ll document everything I learn during those two weeks.</p>
+<p>During those two weeks, I’ll pretend I never knew a thing about C++, starting just from the experience I had with C.<br>This is why I decided to use the book “A Tour of C++” by the man who designed and actively implemented C++ himself, Bjarne Stroustrup.</p>
+<p>This book expects its reader to know their way around C, so it’s perfect for me.</p>
+<blockquote>
+<p>This tour presents C++ as an integrated whole, rather than as a layer cake.</p>
+<p>~ <cite>Bjarne Stroupstrup</cite></p>
+</blockquote>
+<p>I don’t expect to <strong>know</strong> C++ from this book, I will just have the basic notions and build knowledge on top of those fundamentals, which gets us to the…</p>
+<h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>Because! Just because, okay?? stop asking questions!</p>
+<p>Just kidding XD</p>
+<p>Because I decided to get back into competitive programming. As simple as that. I could have used Python, which I’ve used a lot in the past, but I thought, why not add an extra layer of challenge?</p>
+<p>To be able to crank those algorithms, I’ll need a good tool at my disposal, I need to know the basics of that tool.</p>
+<p>C++ is hard, but from my previous experience with it, I loved it and I have a feeling I’m gonna love it even more after all <a href="https://github.com/r4meau" target="_blank" rel="external">the projects I’ve done in C</a> at <a href="http://42.us.org" target="_blank" rel="external">school</a>. Those 42 projects are also <strong>part of</strong> the reason why I didn’t choose Java, Python or [put your favorite one here].</p>
+<p>Right now, I’m working on a mobile app using React Native, learning visual arts in a language called Processing and working on a school project called 21sh using C. All while trying to maintain a good health and staying social. So you might be wondering…</p>
+<h2 id="How"><a href="#How" class="headerlink" title="How"></a>How</h2><h3 id="Time-management"><a href="#Time-management" class="headerlink" title="Time management"></a>Time management</h3><p>By using the <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank" rel="external">Pomodoro Technique</a>. This is a great time management technique that I stumbled upon years ago when I realized how much of a procrastinator I was.</p>
+<p>What I do is I plan my whole week, not just a day, my whole week, from Sunday to Monday. Then I use this technique the whole day to be able to do multiple tasks a day. Thing is, you have to be serious about it. You may lose friends over it because of that, so be careful. This is why I even plan when I spend time with friends.</p>
+<p>I believe using this technique is simply the best way to learn new stuffs. I said <code>new stuffs</code> because it doesn’t only apply to technology, not at all, you can learn <strong>anything</strong> using it. As long as you do it right.</p>
+<p>I would love to talk more about this technique but I’ll keep this for another post for now.</p>
+<h3 id="Good-reading-amp-documenting-habits"><a href="#Good-reading-amp-documenting-habits" class="headerlink" title="Good reading &amp; documenting habits"></a>Good reading &amp; documenting habits</h3><p><strong>Do not expect me to copy and paste the whole book and/or create my own tutorial online</strong>. I’m really just using this blog as some kind of online diary, both for reference and motivation. Yeah, readers, like you, keep me motivated and I’m not ashamed to admit it. :)</p>
+<p>The book has 14 chapters, I’ll be reading one chapter a day, hence the name <em>Two Weeks of C++</em>. That doesn’t mean I’ll post every day! In my weekly plan (remember?), I planned to read it every other day and the whole weekend.</p>
+<p>How do I read? Good question! I use a method I found last year in a book called “How to Win Friends and Influence People”. Haha, disclaimer, this is not a manipulation book… or is it? Up to you XD. It has helped me a lot for my social skills and I thank the author enormously for that.</p>
+<p>So the reading technique is pretty simple, read the book by chapters, reading each chapter twice. The first time will be fast, probably to get to know the subject you’re about to learn, the second time will be slow, this is when you take notes and actually run some codes if it’s a technical book.</p>
+<p>At first, I thought this technique only worked for non-technical books but little did I know how powerful it was on programming books. I even use it for video tutorials now!</p>
+<h2 id="Disclaimer"><a href="#Disclaimer" class="headerlink" title="Disclaimer"></a>Disclaimer</h2><p>I do not know what I’m doing. XD I am no professional C++ programmer. So please, don’t take this series as “the way” to learning C++. This is basically my personal notes from what I read. I put it there so I can come back to it later to get a good grasp of it again. I actually write tutorials on this blog about other stuffs that I’m most experienced about, but this series is not one of them. So, if you are learning C++, do yourself a favor and do a lot of research if you actually read my articles.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>This is just the tip of the iceberg! A lot is about to come. If you’ve read my previous posts you should know by now how much I like to keep my posts short and concise. Each day is probably going to take you at most <del>25</del> 15 minutes to read.</p>
+<p>I think those two weeks are going to be great so stay tuned and keep being awesome! See you in day 01.</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What"><span class="toc-number">1.</span> <span class="toc-text">What</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why"><span class="toc-number">2.</span> <span class="toc-text">Why</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How"><span class="toc-number">3.</span> <span class="toc-text">How</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Time-management"><span class="toc-number">3.1.</span> <span class="toc-text">Time management</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Good-reading-amp-documenting-habits"><span class="toc-number">3.2.</span> <span class="toc-text">Good reading & documenting habits</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Disclaimer"><span class="toc-number">4.</span> <span class="toc-text">Disclaimer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">5.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://rameau.me/two-weeks-of-cpp-day-00/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://rameau.me/two-weeks-of-cpp-day-00/&text=Two Weeks of C++ - Day 00"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://rameau.me/two-weeks-of-cpp-day-00/&title=Two Weeks of C++ - Day 00"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://rameau.me/two-weeks-of-cpp-day-00/&is_video=false&description=Two Weeks of C++ - Day 00"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Two Weeks of C++ - Day 00&body=Check out this article: https://rameau.me/two-weeks-of-cpp-day-00/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://rameau.me/two-weeks-of-cpp-day-00/&title=Two Weeks of C++ - Day 00"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://rameau.me/two-weeks-of-cpp-day-00/&title=Two Weeks of C++ - Day 00"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://rameau.me/two-weeks-of-cpp-day-00/&title=Two Weeks of C++ - Day 00"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://rameau.me/two-weeks-of-cpp-day-00/&title=Two Weeks of C++ - Day 00"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://rameau.me/two-weeks-of-cpp-day-00/&name=Two Weeks of C++ - Day 00&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div id="code-sponsor-widget"></div>
+  <script type="text/javascript"
+    src="https://app.codesponsor.io/scripts/jNV1-MxKHipoKYcus3bhbg?theme=dark&image=hide&height=130"></script>
+  <div class="footer-left">
+    Copyright &copy; 2018 Joe-Bernick Rameau
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/fitvids.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-63759465-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'blog-rameau-me';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+

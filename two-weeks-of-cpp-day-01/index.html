@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="IntroThis is day 01 of the Two weeks of C++ series. Today is about the basics of programming and C++ notation, which is basically C. I’ll point out some good advice by the author and the new stuffs I">
+<meta name="keywords" content="learning,cpp,competitive programming,twocpp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Two Weeks of C++ - Day 01">
+<meta property="og:url" content="https://rameau.me/two-weeks-of-cpp-day-01/index.html">
+<meta property="og:site_name" content="Nick Rameau&#39;s Den">
+<meta property="og:description" content="IntroThis is day 01 of the Two weeks of C++ series. Today is about the basics of programming and C++ notation, which is basically C. I’ll point out some good advice by the author and the new stuffs I">
+<meta property="og:updated_time" content="2018-09-21T02:07:51.983Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Two Weeks of C++ - Day 01">
+<meta name="twitter:description" content="IntroThis is day 01 of the Two weeks of C++ series. Today is about the basics of programming and C++ notation, which is basically C. I’ll point out some good advice by the author and the new stuffs I">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Two Weeks of C++ - Day 01 | Nick Rameau&#39;s Den</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <link rel="canonical" href="two-weeks-of-cpp-day-01/index.html">
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+ <span id="menu">
+ <!-- Commenting this section because I'm already showing the navbar on top of posts -->
+<!--    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/> -->
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/two-weeks-of-cpp-day-02/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/two-weeks-of-cpp-day-00/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://rameau.me/two-weeks-of-cpp-day-01/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://rameau.me/two-weeks-of-cpp-day-01/&text=Two Weeks of C++ - Day 01"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://rameau.me/two-weeks-of-cpp-day-01/&title=Two Weeks of C++ - Day 01"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://rameau.me/two-weeks-of-cpp-day-01/&is_video=false&description=Two Weeks of C++ - Day 01"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Two Weeks of C++ - Day 01&body=Check out this article: https://rameau.me/two-weeks-of-cpp-day-01/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://rameau.me/two-weeks-of-cpp-day-01/&title=Two Weeks of C++ - Day 01"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://rameau.me/two-weeks-of-cpp-day-01/&title=Two Weeks of C++ - Day 01"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://rameau.me/two-weeks-of-cpp-day-01/&title=Two Weeks of C++ - Day 01"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://rameau.me/two-weeks-of-cpp-day-01/&title=Two Weeks of C++ - Day 01"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://rameau.me/two-weeks-of-cpp-day-01/&name=Two Weeks of C++ - Day 01&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Intro"><span class="toc-number">1.</span> <span class="toc-text">Intro</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#The-basics"><span class="toc-number">2.</span> <span class="toc-text">The basics</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Functions"><span class="toc-number">2.1.</span> <span class="toc-text">Functions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-curly-brace-delimited-initializer-list"><span class="toc-number">2.2.</span> <span class="toc-text">The curly-brace-delimited initializer list</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Types-and-Variable-declaration-initialization"><span class="toc-number">2.3.</span> <span class="toc-text">Types and Variable declaration/initialization</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Variables"><span class="toc-number">2.3.1.</span> <span class="toc-text">Variables</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-auto-type"><span class="toc-number">2.3.2.</span> <span class="toc-text">The auto type</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Constant-expressions"><span class="toc-number">2.4.</span> <span class="toc-text">Constant expressions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-range-for-statement"><span class="toc-number">2.5.</span> <span class="toc-text">The range-for-statement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-unary-amp-operator"><span class="toc-number">2.6.</span> <span class="toc-text">The unary & operator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-nullptr"><span class="toc-number">2.7.</span> <span class="toc-text">The nullptr</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">3.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        <!-- Commenting this condition because I still want the header to be displayed for posts. -->
+        
+          <header id="header">
+  <a href="/">
+  
+    
+      <div id="logo" style="background-image: url(https://www.gravatar.com/avatar/04188522e784edc72ea9de6f19cd353f);"></div>
+    
+  
+    <div id="title">
+      <h1>Nick Rameau&#39;s Den</h1>
+    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fa fa-bars fa-2x"></i></a>
+      </li>
+       
+        <li><a href="/">Home</a></li>
+       
+        <li><a href="/about/">About</a></li>
+       
+        <li><a href="/archives/">Writing</a></li>
+       
+        <li><a href="/projects/">Projects</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Two Weeks of C++ - Day 01
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Written on</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-08-02T16:04:00.000Z" itemprop="datePublished">08-02-2017</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/competitive-programming/">competitive programming</a>, <a class="tag-link" href="/tags/cpp/">cpp</a>, <a class="tag-link" href="/tags/learning/">learning</a>, <a class="tag-link" href="/tags/twocpp/">twocpp</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><p>This is day 01 of the <a href="/tags/twocpp/">Two weeks of C++</a> series. Today is about the basics of programming and C++ notation, which is basically C. I’ll point out some good advice by the author and the new stuffs I learned from this chapter.</p>
+<p>If it’s your first time here, please, read the <a href="/two-weeks-of-cpp-day-00/#Disclaimer">disclaimers</a> before moving on.</p>
+<h1 id="The-basics"><a href="#The-basics" class="headerlink" title="The basics"></a>The basics</h1><h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><blockquote>
+<p>The number of errors in code correlates strongly with the amount of code and the complexity of<br>the code.</p>
+<p>~ <cite>Bjarne Stroupstrup</cite></p>
+</blockquote>
+<p>The author recommends to use functions as much as possible to encapsulate repeating code blocks. This helps with more maintainable and shorter code. </p>
+<p>I’m not including function overloading because I already know this from some other OOP languages.</p>
+<h2 id="The-curly-brace-delimited-initializer-list"><a href="#The-curly-brace-delimited-initializer-list" class="headerlink" title="The curly-brace-delimited initializer list"></a>The curly-brace-delimited initializer list</h2><p>On top of the traditional <code>=</code> sign that we use to initialize a variable, C++ offers a <code>{}</code> delimited way of doing it too:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">double</span> d1 = <span class="number">21</span>;</div><div class="line"><span class="keyword">double</span> d2 &#123;<span class="number">21</span>&#125;;</div></pre></td></tr></table></figure>
+<p>It doesn’t feel natural at first, but you get used to it. It’s not only the syntax, it’s a good way, some times, to make sure your variable value doesn’t get converted to the variable type (implicit conversion):</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i1 = <span class="number">42.3</span>; <span class="comment">// Becomes 42 (implicit conversion)</span></div><div class="line"><span class="keyword">int</span> i2 &#123;<span class="number">42.3</span>&#125;; <span class="comment">// Error: floating-point to integer conversion</span></div><div class="line"><span class="keyword">int</span> i3 = &#123;<span class="number">42.3</span>&#125;; <span class="comment">// Same error, you can use both ops but it's not necessary</span></div></pre></td></tr></table></figure>
+<h2 id="Types-and-Variable-declaration-initialization"><a href="#Types-and-Variable-declaration-initialization" class="headerlink" title="Types and Variable declaration/initialization"></a>Types and Variable declaration/initialization</h2><h3 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h3><blockquote>
+<p>A variable should only be left uninitialized in extremely rare circumstances. Don’t introduce a name until you have a suitable value for it.</p>
+<p>~ <cite>Bjarne Stroupstrup</cite></p>
+</blockquote>
+<p>Here, the author is really keen about not declaring empty variables and I gotta say, I don’t quite like it.</p>
+<p>At 42, they ask us to declare every variable we want to use at the top of the function. I think it really helps to know all the variables that are going to be used later so that you can already guess the logic behind the function.<br>I know it adds extra lines and we can explain the logic in a comment, but it seems so much cleaner that way :/</p>
+<p>I think it’s going to be a great advice for competitive programming, but I’ll keep the 42 style for software engineering in low level languages.</p>
+<p>It’s also good to know that user-defined types (<code>string</code> , <code>vector</code> , <code>Matrix</code> , <code>Motor_controller</code> , and <code>Orc_warrior</code>) can be defined to be implicitly initialized. So no need to initialize them.</p>
+<h3 id="The-auto-type"><a href="#The-auto-type" class="headerlink" title="The auto type"></a>The auto type</h3><p>In generic programming it can be hard to know what the type of an object will be and the type name can be long. That’s when <code>auto</code> comes into play:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">auto</span> torf = <span class="literal">false</span>; <span class="comment">// a bool</span></div><div class="line"><span class="keyword">auto</span> c = <span class="string">'i'</span>; <span class="comment">// a char</span></div><div class="line"><span class="keyword">auto</span> i = <span class="number">42</span>; <span class="comment">// an integer</span></div><div class="line"><span class="keyword">auto</span> d = <span class="number">21.12</span>; <span class="comment">// a double</span></div><div class="line"><span class="keyword">auto</span> whatever = <span class="built_in">sqrt</span>(<span class="number">42</span>); <span class="comment">// Whatever type `sqrt` returns</span></div></pre></td></tr></table></figure>
+<p>It’s best to use <code>auto</code> when:</p>
+<ul>
+<li>The definition is in a small scope and we don’t need to make the type clearly visible to readers of the code</li>
+<li>we don’t need to be explicit about a variable’s type or precision (float vs double)</li>
+</ul>
+<h2 id="Constant-expressions"><a href="#Constant-expressions" class="headerlink" title="Constant expressions"></a>Constant expressions</h2><p>We already know the <code>const</code> specifier. C++11 introduced <code>constexpr</code>. So the main difference between those two is that <code>constexpr</code> is mainly for optimization purposes, whereas, <code>const</code> is to assure a variable won’t be changed later in the program. Although, They are both used for better code maintainability.</p>
+<p><code>constexpr</code> makes sure to compute expressions at compile time so that time can be saved when code is ran. Faster and more maintainable code as a result.</p>
+<p>Here’s a good example, courtesy of <a href="http://www.geeksforgeeks.org/understanding-constexper-specifier-in-c/" target="_blank" rel="external">Geeksforgeeks</a>:</p>
+<figure class="highlight c++"><figcaption><span>Fibonacci example</span><a href="https://rameau.me">fib.cpp</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">constexpr</span> <span class="keyword">long</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> (n &lt;= <span class="number">1</span>)? n : fib(n<span class="number">-1</span>) + fib(n<span class="number">-2</span>);</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">const</span> <span class="keyword">long</span> <span class="keyword">int</span> res = fib(<span class="number">42</span>);</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; res;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>So this is a program that computes the Fibonacci number of the number 42. If I compile then run this on my machine using <code>g++ -std=c++11 fib.cpp; time ./a.out</code>, it only takes at most 0.003s.</p>
+<p>When I modify the line 12 into <code>long int res = fib(42);</code>, it takes 3.169s! Crazy, right? That’s because the result of the <code>constexpr</code> is not used in a constant expression, therefore it’s evaluated every time you run the program, not at compile time.</p>
+<h2 id="The-range-for-statement"><a href="#The-range-for-statement" class="headerlink" title="The range-for-statement"></a>The range-for-statement</h2><p>The range-for-statement is a simpler way to traverse a sequence in C++. Instead of the usual</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> nums[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i)</div><div class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; nums[i] &lt;&lt; <span class="string">'\n'</span>;</div></pre></td></tr></table></figure>
+<p>We can do</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> nums[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> i : nums)</div><div class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">'\n'</span>;</div></pre></td></tr></table></figure>
+<p>This reminds me of the <code>for...of</code> statement of JavaScript (I love JS by the way). But it’s even better than <code>for...of</code>, it lets us get each element by reference so we can modify the array on the go, awesome:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> nums[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> &amp;i : nums)</div><div class="line">  ++i;</div><div class="line">  </div><div class="line"><span class="comment">// at this point, `nums` is &#123;2,3,4&#125;</span></div></pre></td></tr></table></figure>
+<h2 id="The-unary-amp-operator"><a href="#The-unary-amp-operator" class="headerlink" title="The unary &amp; operator"></a>The unary <code>&amp;</code> operator</h2><p>Coming from a C background, we all know the <code>&amp;</code> op means pass by reference when passing arguments to a function. Well, in C++, it does even more.</p>
+<p>For example, in a function definition we can accept an argument by reference so the compiler doesn’t need to copy the variable for us to use it (performance!):</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt;&amp; v)</span></span>; <span class="comment">// sort v</span></div></pre></td></tr></table></figure>
+<p>On top of that, if we don’t want to modify the variable but still don’t want the cost of copying it, we can add the <code>const</code> specifier:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">sum</span><span class="params">(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt;&amp;)</span></span></div></pre></td></tr></table></figure>
+<p>This is a very common thing to do in C++. One more thing to notice is that we don’t have to dereference the variable using the unary <code>*</code> op. I’ll talk a little bit more about this in the next post.</p>
+<h2 id="The-nullptr"><a href="#The-nullptr" class="headerlink" title="The nullptr"></a>The nullptr</h2><p>In C, we’re used to test variables against 0 or <code>NULL</code> (stdlib.h). In C++, <code>nullptr</code> is used for pointers. It’s a good way for the reader of the code to differentiate integers from pointers</p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>Phew! That was a great first day. The rest is even better! Yes, I live in the future XD.</p>
+<p>The author leaves some great advice at the end of each chapter, they are mainly related to what he talked about during the whole chapter, so I’ll only point out the ones I think are the most important:</p>
+<ul>
+<li>Focus on programming techniques, not on language features. Remember, C++ is just a tool among a lot of other tools!</li>
+<li>Package meaningful operations as carefully named functions.</li>
+<li>Use overloading when functions perform conceptually the same task on different types</li>
+<li>If a function may have to be evaluated at compile time, declare it constexpr</li>
+<li>Declare one and only one name per declaration</li>
+<li>Prefer the {} initializer syntax for declarations with a named type</li>
+</ul>
+<p>The other advice are great, so I recommend you get the book ;)</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Intro"><span class="toc-number">1.</span> <span class="toc-text">Intro</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#The-basics"><span class="toc-number">2.</span> <span class="toc-text">The basics</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Functions"><span class="toc-number">2.1.</span> <span class="toc-text">Functions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-curly-brace-delimited-initializer-list"><span class="toc-number">2.2.</span> <span class="toc-text">The curly-brace-delimited initializer list</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Types-and-Variable-declaration-initialization"><span class="toc-number">2.3.</span> <span class="toc-text">Types and Variable declaration/initialization</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Variables"><span class="toc-number">2.3.1.</span> <span class="toc-text">Variables</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-auto-type"><span class="toc-number">2.3.2.</span> <span class="toc-text">The auto type</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Constant-expressions"><span class="toc-number">2.4.</span> <span class="toc-text">Constant expressions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-range-for-statement"><span class="toc-number">2.5.</span> <span class="toc-text">The range-for-statement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-unary-amp-operator"><span class="toc-number">2.6.</span> <span class="toc-text">The unary & operator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-nullptr"><span class="toc-number">2.7.</span> <span class="toc-text">The nullptr</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">3.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://rameau.me/two-weeks-of-cpp-day-01/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://rameau.me/two-weeks-of-cpp-day-01/&text=Two Weeks of C++ - Day 01"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://rameau.me/two-weeks-of-cpp-day-01/&title=Two Weeks of C++ - Day 01"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://rameau.me/two-weeks-of-cpp-day-01/&is_video=false&description=Two Weeks of C++ - Day 01"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Two Weeks of C++ - Day 01&body=Check out this article: https://rameau.me/two-weeks-of-cpp-day-01/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://rameau.me/two-weeks-of-cpp-day-01/&title=Two Weeks of C++ - Day 01"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://rameau.me/two-weeks-of-cpp-day-01/&title=Two Weeks of C++ - Day 01"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://rameau.me/two-weeks-of-cpp-day-01/&title=Two Weeks of C++ - Day 01"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://rameau.me/two-weeks-of-cpp-day-01/&title=Two Weeks of C++ - Day 01"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://rameau.me/two-weeks-of-cpp-day-01/&name=Two Weeks of C++ - Day 01&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div id="code-sponsor-widget"></div>
+  <script type="text/javascript"
+    src="https://app.codesponsor.io/scripts/jNV1-MxKHipoKYcus3bhbg?theme=dark&image=hide&height=130"></script>
+  <div class="footer-left">
+    Copyright &copy; 2018 Joe-Bernick Rameau
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/fitvids.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-63759465-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'blog-rameau-me';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+

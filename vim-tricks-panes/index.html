@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="IntroductionWelcome to the Vim tricks series! So, this one is the first one of them. I couldn’t post about C++ lately because the chapter I’m on is long and I have freelance work on my hands. But I ha">
+<meta name="keywords" content="vim-tricks,text-editor,vim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vim tricks: Panes">
+<meta property="og:url" content="https://rameau.me/vim-tricks-panes/index.html">
+<meta property="og:site_name" content="Nick Rameau&#39;s Den">
+<meta property="og:description" content="IntroductionWelcome to the Vim tricks series! So, this one is the first one of them. I couldn’t post about C++ lately because the chapter I’m on is long and I have freelance work on my hands. But I ha">
+<meta property="og:image" content="https://rameau.me/images/vim-tricks/panes-and-tabs.gif">
+<meta property="og:updated_time" content="2018-09-21T02:07:51.984Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vim tricks: Panes">
+<meta name="twitter:description" content="IntroductionWelcome to the Vim tricks series! So, this one is the first one of them. I couldn’t post about C++ lately because the chapter I’m on is long and I have freelance work on my hands. But I ha">
+<meta name="twitter:image" content="https://rameau.me/images/vim-tricks/panes-and-tabs.gif">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Vim tricks: Panes | Nick Rameau&#39;s Den</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <link rel="canonical" href="vim-tricks-panes/index.html">
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+ <span id="menu">
+ <!-- Commenting this section because I'm already showing the navbar on top of posts -->
+<!--    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/> -->
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/two-weeks-of-cpp-day-04/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/two-weeks-of-cpp-day-03/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://rameau.me/vim-tricks-panes/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://rameau.me/vim-tricks-panes/&text=Vim tricks: Panes"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://rameau.me/vim-tricks-panes/&title=Vim tricks: Panes"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://rameau.me/vim-tricks-panes/&is_video=false&description=Vim tricks: Panes"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Vim tricks: Panes&body=Check out this article: https://rameau.me/vim-tricks-panes/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://rameau.me/vim-tricks-panes/&title=Vim tricks: Panes"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://rameau.me/vim-tricks-panes/&title=Vim tricks: Panes"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://rameau.me/vim-tricks-panes/&title=Vim tricks: Panes"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://rameau.me/vim-tricks-panes/&title=Vim tricks: Panes"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://rameau.me/vim-tricks-panes/&name=Vim tricks: Panes&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Creating-panes"><span class="toc-number">1.1.</span> <span class="toc-text">Creating panes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Closing-panes"><span class="toc-number">1.2.</span> <span class="toc-text">Closing panes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Navigating-between-panes"><span class="toc-number">1.3.</span> <span class="toc-text">Navigating between panes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Resizing-panes"><span class="toc-number">1.4.</span> <span class="toc-text">Resizing panes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Moving-panes-around"><span class="toc-number">1.5.</span> <span class="toc-text">Moving panes around</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bonus"><span class="toc-number">1.6.</span> <span class="toc-text">Bonus</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Make-Vim-open-panes-more-naturally"><span class="toc-number">1.6.1.</span> <span class="toc-text">Make Vim open panes more naturally</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Faster-pane-navigation"><span class="toc-number">1.6.2.</span> <span class="toc-text">Faster pane navigation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mixing-panes-with-tabs"><span class="toc-number">1.6.3.</span> <span class="toc-text">Mixing panes with tabs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NERDtree"><span class="toc-number">1.6.4.</span> <span class="toc-text">NERDtree</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">2.</span> <span class="toc-text">Conclusion</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">2.1.</span> <span class="toc-text">References</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        <!-- Commenting this condition because I still want the header to be displayed for posts. -->
+        
+          <header id="header">
+  <a href="/">
+  
+    
+      <div id="logo" style="background-image: url(https://www.gravatar.com/avatar/04188522e784edc72ea9de6f19cd353f);"></div>
+    
+  
+    <div id="title">
+      <h1>Nick Rameau&#39;s Den</h1>
+    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fa fa-bars fa-2x"></i></a>
+      </li>
+       
+        <li><a href="/">Home</a></li>
+       
+        <li><a href="/about/">About</a></li>
+       
+        <li><a href="/archives/">Writing</a></li>
+       
+        <li><a href="/projects/">Projects</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Vim tricks: Panes
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Written on</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-09-24T02:14:00.000Z" itemprop="datePublished">09-23-2017</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/text-editor/">text-editor</a>, <a class="tag-link" href="/tags/vim/">vim</a>, <a class="tag-link" href="/tags/vim-tricks/">vim-tricks</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Welcome to the Vim tricks series! So, this one is the first one of them. I couldn’t post about C++ lately because the chapter I’m on is long and I have freelance work on my hands.</p>
+<p>But I have enough time to share some tricks I learned on my Vim journey. This is mainly so I can come back to them easily later if I ever switch to another editor at some point. But I hope it can be useful to someone else passing by on my website.</p>
+<p>So, today is about panes, or more commonly called <code>splits</code> or <code>split panes</code>. Knowing how to browse around panes will accelerate your coding process, so I believe it’s a good feature to add to your arsenal.</p>
+<p>If you’re not comfortable with Vim yet, please take some time to <a href="https://danielmiessler.com/study/vim/#gs.VnumRK0" target="_blank" rel="external">read this amazing article</a> by <a href="https://danielmiessler.com/" target="_blank" rel="external">Daniel Miessler</a>.</p>
+<p><strong>This article is not for total Vim beginners.</strong> So make sure you read the one linked above.</p>
+<p>Let’s not waste time and get right to it.</p>
+<h2 id="Creating-panes"><a href="#Creating-panes" class="headerlink" title="Creating panes"></a>Creating panes</h2><ul>
+<li><code>:vs</code> or <code>:vsplit</code> - Creates a new vertical pane</li>
+<li><code>:sp</code> or <code>:split</code> - Creates a new horizontal pane</li>
+</ul>
+<p>Passing a file name - relative to the working directory - to those commands will open the file in the respective pane:</p>
+<ul>
+<li><code>:vs src/main.c</code> - Opens <code>main.c</code> in a vertical pane</li>
+<li><code>:sp src/auth.js</code> - Opens <code>auth.js</code> in an horizontal pane</li>
+</ul>
+<p>Putting a number in front of <code>vsp</code> and <code>sp</code> will create a new pane as large and as tall as this number respectively:</p>
+<ul>
+<li><code>:42vs</code> - Creates a new pane 42 large</li>
+<li><code>:21sp src/functions.php</code> - Opens <code>functions.php</code> in a new horizontal pane 21 tall</li>
+</ul>
+<p>Note: I’m not sure which measurement Vim uses (pixels, rem, etc…). I couldn’t find it online. If you know, let me know in the comments section below. :)</p>
+<h2 id="Closing-panes"><a href="#Closing-panes" class="headerlink" title="Closing panes"></a>Closing panes</h2><p>You close a pane just like you would close any buffer or Vim itself, using <code>:q</code>.</p>
+<ul>
+<li><code>Ctrl + w + o</code> - Closes every pane, except for the active one</li>
+</ul>
+<h2 id="Navigating-between-panes"><a href="#Navigating-between-panes" class="headerlink" title="Navigating between panes"></a>Navigating between panes</h2><ul>
+<li><code>Ctrl + w + h</code> - Go to the pane on the left</li>
+<li><code>Ctrl + w + j</code> - Go to the pane below</li>
+<li><code>Ctrl + w + k</code> - Go to the pane above</li>
+<li><code>Ctrl + w + l</code> - Go to the pane on the right</li>
+</ul>
+<p>Note: You can press <code>Ctrl + w</code>, release, then press the next key. It’s easier like this. Pressing them simultaneously works too.</p>
+<p>Does this feel like too much? Check out the Bonus section  below for some shortcuts. ;)</p>
+<h2 id="Resizing-panes"><a href="#Resizing-panes" class="headerlink" title="Resizing panes"></a>Resizing panes</h2><ul>
+<li><code>Ctrl + w + &lt;</code> - Decrease the width by 1</li>
+<li><code>Ctrl + w + &gt;</code> - Increase the width by 1</li>
+<li><code>Ctrl + w + -</code> - Decrease the height by 1</li>
+<li><code>Ctrl + w + +</code> - Increase the height by 1</li>
+</ul>
+<p>Putting a number in front of those commands will resize the pane by that amount of number:</p>
+<ul>
+<li><code>20 + Ctrl + w + &lt;</code> - Decrease the width by 20</li>
+<li><code>42 + Ctrl + w + +</code> - Increase the height by 42</li>
+</ul>
+<p>The commands below help you focus on one pane:</p>
+<ul>
+<li><code>Ctrl + w + |</code> - Maxes out the width of the pane</li>
+<li><code>Ctrl + w + _</code> - Maxes out the height of the pane</li>
+</ul>
+<p>When you’re done with that pane, save yourself the hassle of resizing all the other panes:</p>
+<ul>
+<li><code>Ctrl + w + =</code> - Evenly redistributes the whole window size between all panes</li>
+</ul>
+<h2 id="Moving-panes-around"><a href="#Moving-panes-around" class="headerlink" title="Moving panes around"></a>Moving panes around</h2><p>Notice that some keys are in uppercase, they are different from their lowercase counterparts.</p>
+<ul>
+<li><code>Ctrl + w + H</code> - Move active pane to the left</li>
+<li><code>Ctrl + w + J</code> - Move active pane to the bottom</li>
+<li><code>Ctrl + w + K</code> - Move active pane to the top</li>
+<li><code>Ctrl + w + L</code> - Move active pane to the right</li>
+<li><code>Ctrl + w + r</code> - Rotates active pane with the one below or next to it, switching their position</li>
+</ul>
+<h2 id="Bonus"><a href="#Bonus" class="headerlink" title="Bonus"></a>Bonus</h2><p>That’s all for today lad! Now if you want more speed, keep reading.</p>
+<p>This section is more about personal preferences, take them with a grain of salt and modify them to your liking.</p>
+<h3 id="Make-Vim-open-panes-more-naturally"><a href="#Make-Vim-open-panes-more-naturally" class="headerlink" title="Make Vim open panes more naturally"></a>Make Vim open panes more naturally</h3><p>Normally Vim opens new horizontal panes above and new vertical panes on the left. I don’t like this and I believe it should be the opposite. Which is why I add those two lines to my <code>.vimrc</code>.</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">" Open new panes on the right (:vsp) and below (:sp) instead of the default left and top</span></div><div class="line"><span class="keyword">set</span> splitright</div><div class="line"><span class="keyword">set</span> splitbelow</div></pre></td></tr></table></figure>
+<h3 id="Faster-pane-navigation"><a href="#Faster-pane-navigation" class="headerlink" title="Faster pane navigation"></a>Faster pane navigation</h3><p>I got used to the default way of navigating between panes, but I felt like I could go faster, so here’s what I added to my <code>.vimrc</code>:</p>
+<figure class="highlight vim"><figcaption><span>.vimrc</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">" ...</span></div><div class="line"></div><div class="line"><span class="comment">" Making browsing split panes great again!</span></div><div class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-H&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-H&gt;</span></div><div class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-J&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-J&gt;</span></div><div class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-K&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-K&gt;</span></div><div class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-L&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-L&gt;</span></div><div class="line"></div><div class="line"><span class="comment">" ...</span></div></pre></td></tr></table></figure>
+<p>What this does is, instead of just <code>Ctrl + w + j</code> to go to the pane below, as an example, you can now do <code>Ctrl + j</code> too. Way shorter.</p>
+<h3 id="Mixing-panes-with-tabs"><a href="#Mixing-panes-with-tabs" class="headerlink" title="Mixing panes with tabs"></a>Mixing panes with tabs</h3><p>Panes are great on their own, what if I told you, adding tabs to the mix makes the experience even better? Let’s see it in action.</p>
+<ul>
+<li><code>Ctrl + w + T</code> - Opens active pane as a new tab</li>
+</ul>
+<p>Now you have two tabs, one with the old active pane and the other with all the previously opened panes.</p>
+<p>Here’s how to browse between tabs:</p>
+<ul>
+<li><code>gt</code> - Goes to next tab</li>
+<li><code>gT</code> - Goes to previous tab</li>
+</ul>
+<p>Have a look at this quick demo:</p>
+<p><img src="/images/vim-tricks/panes-and-tabs.gif" alt="panes-and-tabs"></p>
+<h3 id="NERDtree"><a href="#NERDtree" class="headerlink" title="NERDtree"></a>NERDtree</h3><p>As you can see from the GIF above, I’m using the <a href="https://github.com/scrooloose/nerdtree" target="_blank" rel="external">NERDtree</a> plugin. If you don’t know what it is, it’s a file system explorer, just like the default sidebar in Sublime Text or other popular text editors.</p>
+<p>This plugin makes a really great use of panes, so I thought I’d mention it.</p>
+<p>In their <a href="https://github.com/scrooloose/nerdtree#faq" target="_blank" rel="external">F.A.Q section</a>, they give you some great configuration commands to get started. Which is what I did, and added them in my own <code>.vimrc</code>.</p>
+<p>Have a <a href="https://github.com/R4meau/dotfiles/blob/master/.vimrc#L76" target="_blank" rel="external">look here</a> at my own <code>.vimrc</code>.</p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>Phew! That was good. Right? Well I hope so. Vim is a powerful tool. I hope you felt the same power I felt after learning those tricks.</p>
+<p>Being able to browse easily around it will make you faster while increasing your productivity. On top of that, you get to look cool for doing those so easily with your keyboard.</p>
+<p>But remember, Vim is just a tool, try other tools to see if they fit the job ;)</p>
+<p>Stay tuned for more, as my Vim journey to mastery has only just begun.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>A Vim Tutorial and Primer: <a href="https://danielmiessler.com/study/vim/#gs.VnumRK0" target="_blank" rel="external">Daniel Miessler</a></p>
+<p>Vim Splits - Move Faster and More Naturally: <a href="https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally" target="_blank" rel="external">Toughtbot</a></p>
+<p>Thanks for reading, for quick replies, <a href="https://twitter.com/r4meau" target="_blank" rel="external">follow me on Twitter</a> and tweet me a “Hi!”. I’ll definitely DM you.</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Creating-panes"><span class="toc-number">1.1.</span> <span class="toc-text">Creating panes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Closing-panes"><span class="toc-number">1.2.</span> <span class="toc-text">Closing panes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Navigating-between-panes"><span class="toc-number">1.3.</span> <span class="toc-text">Navigating between panes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Resizing-panes"><span class="toc-number">1.4.</span> <span class="toc-text">Resizing panes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Moving-panes-around"><span class="toc-number">1.5.</span> <span class="toc-text">Moving panes around</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bonus"><span class="toc-number">1.6.</span> <span class="toc-text">Bonus</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Make-Vim-open-panes-more-naturally"><span class="toc-number">1.6.1.</span> <span class="toc-text">Make Vim open panes more naturally</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Faster-pane-navigation"><span class="toc-number">1.6.2.</span> <span class="toc-text">Faster pane navigation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mixing-panes-with-tabs"><span class="toc-number">1.6.3.</span> <span class="toc-text">Mixing panes with tabs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NERDtree"><span class="toc-number">1.6.4.</span> <span class="toc-text">NERDtree</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">2.</span> <span class="toc-text">Conclusion</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">2.1.</span> <span class="toc-text">References</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://rameau.me/vim-tricks-panes/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://rameau.me/vim-tricks-panes/&text=Vim tricks: Panes"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://rameau.me/vim-tricks-panes/&title=Vim tricks: Panes"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://rameau.me/vim-tricks-panes/&is_video=false&description=Vim tricks: Panes"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Vim tricks: Panes&body=Check out this article: https://rameau.me/vim-tricks-panes/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://rameau.me/vim-tricks-panes/&title=Vim tricks: Panes"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://rameau.me/vim-tricks-panes/&title=Vim tricks: Panes"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://rameau.me/vim-tricks-panes/&title=Vim tricks: Panes"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://rameau.me/vim-tricks-panes/&title=Vim tricks: Panes"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://rameau.me/vim-tricks-panes/&name=Vim tricks: Panes&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div id="code-sponsor-widget"></div>
+  <script type="text/javascript"
+    src="https://app.codesponsor.io/scripts/jNV1-MxKHipoKYcus3bhbg?theme=dark&image=hide&height=130"></script>
+  <div class="footer-left">
+    Copyright &copy; 2018 Joe-Bernick Rameau
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/fitvids.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-63759465-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'blog-rameau-me';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="IntroThis is day 03 of the Two weeks of C++ series. Today is about modularity.  If it’s your first time here, please, read the disclaimers before moving on. Separate CompilationSeparate compilation in">
+<meta name="keywords" content="learning,cpp,competitive programming,twocpp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Two Weeks of C++ - Day 03">
+<meta property="og:url" content="https://rameau.me/two-weeks-of-cpp-day-03/index.html">
+<meta property="og:site_name" content="Nick Rameau&#39;s Den">
+<meta property="og:description" content="IntroThis is day 03 of the Two weeks of C++ series. Today is about modularity.  If it’s your first time here, please, read the disclaimers before moving on. Separate CompilationSeparate compilation in">
+<meta property="og:updated_time" content="2018-09-21T02:07:51.984Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Two Weeks of C++ - Day 03">
+<meta name="twitter:description" content="IntroThis is day 03 of the Two weeks of C++ series. Today is about modularity.  If it’s your first time here, please, read the disclaimers before moving on. Separate CompilationSeparate compilation in">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Two Weeks of C++ - Day 03 | Nick Rameau&#39;s Den</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <link rel="canonical" href="two-weeks-of-cpp-day-03/index.html">
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+ <span id="menu">
+ <!-- Commenting this section because I'm already showing the navbar on top of posts -->
+<!--    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/> -->
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/vim-tricks-panes/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/two-weeks-of-cpp-day-02/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://rameau.me/two-weeks-of-cpp-day-03/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://rameau.me/two-weeks-of-cpp-day-03/&text=Two Weeks of C++ - Day 03"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://rameau.me/two-weeks-of-cpp-day-03/&title=Two Weeks of C++ - Day 03"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://rameau.me/two-weeks-of-cpp-day-03/&is_video=false&description=Two Weeks of C++ - Day 03"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Two Weeks of C++ - Day 03&body=Check out this article: https://rameau.me/two-weeks-of-cpp-day-03/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://rameau.me/two-weeks-of-cpp-day-03/&title=Two Weeks of C++ - Day 03"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://rameau.me/two-weeks-of-cpp-day-03/&title=Two Weeks of C++ - Day 03"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://rameau.me/two-weeks-of-cpp-day-03/&title=Two Weeks of C++ - Day 03"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://rameau.me/two-weeks-of-cpp-day-03/&title=Two Weeks of C++ - Day 03"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://rameau.me/two-weeks-of-cpp-day-03/&name=Two Weeks of C++ - Day 03&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Intro"><span class="toc-number">1.</span> <span class="toc-text">Intro</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Separate-Compilation"><span class="toc-number">1.1.</span> <span class="toc-text">Separate Compilation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Namespaces"><span class="toc-number">1.2.</span> <span class="toc-text">Namespaces</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Error-Handling"><span class="toc-number">1.3.</span> <span class="toc-text">Error Handling</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Exceptions"><span class="toc-number">1.3.1.</span> <span class="toc-text">Exceptions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-noexcept-specifier"><span class="toc-number">1.3.2.</span> <span class="toc-text">The noexcept specifier</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Invariants"><span class="toc-number">1.3.3.</span> <span class="toc-text">Invariants</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Static-Assertions"><span class="toc-number">1.3.4.</span> <span class="toc-text">Static Assertions</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">2.</span> <span class="toc-text">Conclusion</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">2.1.</span> <span class="toc-text">References</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        <!-- Commenting this condition because I still want the header to be displayed for posts. -->
+        
+          <header id="header">
+  <a href="/">
+  
+    
+      <div id="logo" style="background-image: url(https://www.gravatar.com/avatar/04188522e784edc72ea9de6f19cd353f);"></div>
+    
+  
+    <div id="title">
+      <h1>Nick Rameau&#39;s Den</h1>
+    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fa fa-bars fa-2x"></i></a>
+      </li>
+       
+        <li><a href="/">Home</a></li>
+       
+        <li><a href="/about/">About</a></li>
+       
+        <li><a href="/archives/">Writing</a></li>
+       
+        <li><a href="/projects/">Projects</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Two Weeks of C++ - Day 03
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Written on</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-08-10T02:32:00.000Z" itemprop="datePublished">08-09-2017</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/competitive-programming/">competitive programming</a>, <a class="tag-link" href="/tags/cpp/">cpp</a>, <a class="tag-link" href="/tags/learning/">learning</a>, <a class="tag-link" href="/tags/twocpp/">twocpp</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h1><p>This is day 03 of the <a href="/tags/twocpp/">Two weeks of C++</a> series. Today is about modularity. </p>
+<p>If it’s your first time here, please, read the <a href="/two-weeks-of-cpp-day-00/#Disclaimer">disclaimers</a> before moving on.</p>
+<h2 id="Separate-Compilation"><a href="#Separate-Compilation" class="headerlink" title="Separate Compilation"></a>Separate Compilation</h2><p>Separate compilation involves separating, at a language level, the interface (the declaration of a module) from the implementation (the definition of that module).</p>
+<p>Notice how we’re using the same terms (interface and implementation) we used for the public and private members of a class from the last day as the declaration and definition of a class here? Yeah, that’s why I mentioned <code>at a language level</code> here. Keep this in mind!</p>
+<p>For example, it would involve declaring a whole class in a header (.h) file, define that class in a respectively named source (.cpp) file and then use that class from another source file:</p>
+<figure class="highlight cpp"><figcaption><span>Separate Compilation: The interface</span><a href="http://localhost:4000/two-weeks-of-cpp-day-03/#Separate-Compilation" target="_blank" rel="external">Vector.h</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector</span></span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">public</span>:</div><div class="line">    Vector(<span class="keyword">int</span> s);</div><div class="line">    <span class="keyword">double</span>&amp; <span class="keyword">operator</span>[](<span class="keyword">int</span> i);</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;</div><div class="line">  <span class="keyword">private</span>:</div><div class="line">    <span class="keyword">double</span>∗ elem;</div><div class="line">    <span class="keyword">int</span> sz;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight cpp"><figcaption><span>Separate Compilation: The implementation</span><a href="http://localhost:4000/two-weeks-of-cpp-day-03/#Separate-Compilation" target="_blank" rel="external">Vector.cpp</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Vector.h"</span></span></div><div class="line"></div><div class="line">Vector::Vector(<span class="keyword">int</span> s) :elem&#123;<span class="keyword">new</span> <span class="keyword">double</span>[s]&#125;, sz&#123;s&#125;</div><div class="line">&#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">double</span>&amp; Vector::<span class="keyword">operator</span>[](<span class="keyword">int</span> i)</div><div class="line">&#123;</div><div class="line">  <span class="keyword">return</span> elem[i];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">int</span> Vector::size()</div><div class="line">&#123;</div><div class="line">  <span class="keyword">return</span> sz;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight cpp"><figcaption><span>Separate Compilation: Usage</span><a href="http://localhost:4000/two-weeks-of-cpp-day-03/#Separate-Compilation" target="_blank" rel="external">doing_stuff_with_Vector.cpp</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Vector.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">sqrt_sum</span><span class="params">(Vector&amp; v)</span></span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">double</span> sum = <span class="number">0</span>;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i != v.size(); ++i)</div><div class="line">    sum += <span class="built_in">sqrt</span>(v[i]);</div><div class="line">  <span class="keyword">return</span> sum;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>This is another well known advice among 42 students. I mentioned it here because it’s a really important practice when it comes to modularity. It saves compilation time and reduces possible errors.</p>
+<h2 id="Namespaces"><a href="#Namespaces" class="headerlink" title="Namespaces"></a>Namespaces</h2><p>In C++, namespaces are a great way to “package” some declarations together so that they don’t clash with other names in the current scope.</p>
+<p>For example:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span>  <span class="title">print_something</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"something"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">namespace</span> My_code</div><div class="line">&#123;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">print_something</span><span class="params">()</span></span></div><div class="line">  &#123;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Something else"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span>  <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">  print_something();</div><div class="line">  My_code::print_something();</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>A great use of namespaces would have been my <a href="https://github.com/r4meau/libft" target="_blank" rel="external">Libft</a> library. I wish C had this feature (no hacks ;) ), would have saved me from having to put an <code>ft_</code> in front of each function name.</p>
+<h2 id="Error-Handling"><a href="#Error-Handling" class="headerlink" title="Error Handling"></a>Error Handling</h2><blockquote>
+<p>It is a good idea to design and articulate a strategy for error handling early on in the development of a program.</p>
+<p>~ <cite>Bjarne Stroustrup</cite></p>
+</blockquote>
+<p>Error handling is a crucial part of software development.</p>
+<h3 id="Exceptions"><a href="#Exceptions" class="headerlink" title="Exceptions"></a>Exceptions</h3><p>I won’t go into too much detail about how to handle errors in C++ using exceptions because it’s basically the same thing as in JavaScript.</p>
+<p>Refer to the References section below for a reminder.</p>
+<h3 id="The-noexcept-specifier"><a href="#The-noexcept-specifier" class="headerlink" title="The noexcept specifier"></a>The <code>noexcept</code> specifier</h3><p>If a function should not throw any errors, you can declare it as a <code>noexcept</code> function:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">fill_up</span><span class="params">()</span> <span class="keyword">noexcept</span></span></div><div class="line">&#123;</div><div class="line">  <span class="built_in">std</span>::<span class="built_in">list</span>&lt;<span class="keyword">int</span>&gt; l(<span class="number">10</span>);</div><div class="line">  <span class="built_in">std</span>::iota(l.begin(), l.end(), <span class="number">-4</span>);</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Using this specifier is a result of good intent and planning. If the function still throws an error (bad planning), the standard-library function <code>terminate</code> is called to immediately terminate the program.</p>
+<h3 id="Invariants"><a href="#Invariants" class="headerlink" title="Invariants"></a>Invariants</h3><blockquote>
+<p>Whenever we define a function, we should consider what its preconditions are and if feasible test them.</p>
+<p>~ <cite>Bjarne Stroustrup</cite></p>
+</blockquote>
+<p>To understand invariants, let’s see a good example of error handling. Yeah, I know I said I wouldn’t go into too much detail :P</p>
+<p>In our <code>Vector</code> class definition above, the subscript operator assumes the integer <code>i</code> that it receives is within the bounds of the <code>elem</code> property. What if it wasn’t? So let’s make sure we throw an error when it’s not the case:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">double</span>&amp; Vector::<span class="keyword">operator</span>[](<span class="keyword">int</span> i)</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span> (i &lt; <span class="number">0</span> || size() &lt;= i )</div><div class="line">    <span class="keyword">throw</span> out_of_range&#123;<span class="string">"Vector::operator[]"</span>&#125;;</div><div class="line">  <span class="keyword">return</span> elem[i];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Here we’re throwing an <code>out_of_range</code> error, which is an actual type from the standard library (<code>&lt;stdexcept&gt;</code>) used by some standard-library container access functions. Here’s how a user of that class would <code>catch</code> the error:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(Vector&amp; v)</span></span></div><div class="line">&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    v[v.size()] = <span class="number">7</span>; <span class="comment">// try to access beyond the end of v</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">catch</span> (out_of_range) &#123; <span class="comment">// oops: out_of_range error</span></div><div class="line">    <span class="comment">// ... handle out of range error ...</span></div><div class="line">  &#125;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Okay, that’s good, we took care of this possible error. Remember, the subscript operator depends on the values of the <code>elem</code> prop, therefor, it depends on the constructor. </p>
+<p>Now, if we look at the constructor, it’s assuming that the integer <code>s</code> is always a positive number and so it allocates memory for the <code>elem</code> property. This is what an invariant is, it’s simply a statement that is assumed to be true for a class. </p>
+<p>In our <code>Vector</code> class definition above, the constructor is allocating the memory for the <code>elem</code> prop, but it’s not establishing the invariant for its class, which is to check that the integer <code>s</code> passed to it is actually a positive number. Let’s take care of that:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Vector::Vector(<span class="keyword">int</span> s)</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span> (s &lt; <span class="number">0</span>)</div><div class="line">    <span class="keyword">throw</span> length_error&#123;&#125;;</div><div class="line">  elem = <span class="keyword">new</span> <span class="keyword">double</span>[s];</div><div class="line">  sz = s;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Now that’s better! If we pass, for example, -42 to our constructor, it’s going to complain about it and we know how to catch that error. <code>length_error</code> is yet another standard exception type.</p>
+<h3 id="Static-Assertions"><a href="#Static-Assertions" class="headerlink" title="Static Assertions"></a>Static Assertions</h3><p>Exceptions are great for finding run time errors. It’s also good practice to handle some errors at compile time whenever possible. This is when static assertions come into play.</p>
+<p>A really basic example of it would be to check if the integers on a system are at least 4 bytes:</p>
+<p><code>static_assert(4 &lt;= sizeof(int), &quot;Integers are too small&quot;);</code></p>
+<p>If the first parameter of <code>static_assert</code> is false, it prints its second parameter as a compiler error message. Neat, right?</p>
+<p>And of course, we can use it when it comes to constant expressions:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">constexpr</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> nick_age = <span class="number">21</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> mom_age = <span class="number">42</span>;</div><div class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> dad_age = <span class="number">42</span>;</div><div class="line"></div><div class="line"><span class="keyword">static_assert</span>(mom_age &lt;= nick_age, <span class="string">"Cannot be older than your mother!"</span>); <span class="comment">// OK, constant expressions used</span></div><div class="line"><span class="keyword">static_assert</span>(dad_age &lt;= nick_age, <span class="string">"Cannot be older than your father!"</span>); <span class="comment">// KO, dad_age is not a constant expression</span></div></pre></td></tr></table></figure>
+<p>Not a really useful example, but hey, you get it! Those are not real age numbers by the way.</p>
+<p>Static assertions will be more useful when we need to make assertions about types used as parameters in generic programming. More about this in days 5 and 11.</p>
+<blockquote>
+<p>One effect of modularity and abstraction (in particular, the use of libraries) is that the point where a run-time error can be detected is separated from the point where it can be handled.</p>
+<p>~ <cite>Bjarne Stroustrup</cite></p>
+</blockquote>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>Today’s subject is definitely not going to be useful for competitive programming. But I’m always in favor of good practices, so this is going to be great when it comes to software engineering.</p>
+<p>Here’s what to remember for the day:</p>
+<ul>
+<li>Distinguish between declarations (used as interfaces) and definitions (used as implementations)</li>
+<li>Use header files to represent interfaces and to emphasize logical structure</li>
+<li>Avoid non-inline function definitions in headers</li>
+<li>Use namespaces to express logical structure</li>
+<li>Develop an error-handling strategy early in a design</li>
+<li>Use purpose-designed user-defined types as exceptions (not built-in types)</li>
+<li>Don’t try to catch every exception in every function</li>
+<li>If your function may not throw, declare it <code>noexcept</code></li>
+<li>Let a constructor establish an invariant, and throw if it cannot</li>
+<li>Design your error-handling strategy around invariants</li>
+<li>What can be checked at compile time is usually best checked at compile time (using <code>static_assert</code>)</li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>Here’s a good tutorial on C++ exceptions and some standard exception types: <a href="http://www.tutorialspoint.com/cplusplus/cpp_exceptions_handling.htm" target="_blank" rel="external">TutorialsPoint</a></p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Intro"><span class="toc-number">1.</span> <span class="toc-text">Intro</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Separate-Compilation"><span class="toc-number">1.1.</span> <span class="toc-text">Separate Compilation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Namespaces"><span class="toc-number">1.2.</span> <span class="toc-text">Namespaces</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Error-Handling"><span class="toc-number">1.3.</span> <span class="toc-text">Error Handling</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Exceptions"><span class="toc-number">1.3.1.</span> <span class="toc-text">Exceptions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-noexcept-specifier"><span class="toc-number">1.3.2.</span> <span class="toc-text">The noexcept specifier</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Invariants"><span class="toc-number">1.3.3.</span> <span class="toc-text">Invariants</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Static-Assertions"><span class="toc-number">1.3.4.</span> <span class="toc-text">Static Assertions</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">2.</span> <span class="toc-text">Conclusion</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">2.1.</span> <span class="toc-text">References</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://rameau.me/two-weeks-of-cpp-day-03/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://rameau.me/two-weeks-of-cpp-day-03/&text=Two Weeks of C++ - Day 03"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://rameau.me/two-weeks-of-cpp-day-03/&title=Two Weeks of C++ - Day 03"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://rameau.me/two-weeks-of-cpp-day-03/&is_video=false&description=Two Weeks of C++ - Day 03"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Two Weeks of C++ - Day 03&body=Check out this article: https://rameau.me/two-weeks-of-cpp-day-03/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://rameau.me/two-weeks-of-cpp-day-03/&title=Two Weeks of C++ - Day 03"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://rameau.me/two-weeks-of-cpp-day-03/&title=Two Weeks of C++ - Day 03"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://rameau.me/two-weeks-of-cpp-day-03/&title=Two Weeks of C++ - Day 03"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://rameau.me/two-weeks-of-cpp-day-03/&title=Two Weeks of C++ - Day 03"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://rameau.me/two-weeks-of-cpp-day-03/&name=Two Weeks of C++ - Day 03&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div id="code-sponsor-widget"></div>
+  <script type="text/javascript"
+    src="https://app.codesponsor.io/scripts/jNV1-MxKHipoKYcus3bhbg?theme=dark&image=hide&height=130"></script>
+  <div class="footer-left">
+    Copyright &copy; 2018 Joe-Bernick Rameau
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/projects/">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+<link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/fitvids.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-63759465-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'blog-rameau-me';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
