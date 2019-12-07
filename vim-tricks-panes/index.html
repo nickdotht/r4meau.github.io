@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <!-- so meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="IntroductionWelcome to the Vim tricks series! So, this one is the first one of them. I couldn’t post about C++ lately because the chapter I’m on is long and I have freelance work on my hands. But I ha">
 <meta name="keywords" content="vim-tricks,text-editor,vim">
 <meta property="og:type" content="article">
@@ -13,6 +13,7 @@
 <meta property="og:url" content="https://rameau.me/vim-tricks-panes/index.html">
 <meta property="og:site_name" content="Nick Rameau&#39;s Den">
 <meta property="og:description" content="IntroductionWelcome to the Vim tricks series! So, this one is the first one of them. I couldn’t post about C++ lately because the chapter I’m on is long and I have freelance work on my hands. But I ha">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="https://rameau.me/images/vim-tricks/panes-and-tabs.gif">
 <meta property="og:updated_time" content="2018-09-21T02:07:51.984Z">
 <meta name="twitter:card" content="summary">
@@ -175,7 +176,7 @@
     <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Welcome to the Vim tricks series! So, this one is the first one of them. I couldn’t post about C++ lately because the chapter I’m on is long and I have freelance work on my hands.</p>
 <p>But I have enough time to share some tricks I learned on my Vim journey. This is mainly so I can come back to them easily later if I ever switch to another editor at some point. But I hope it can be useful to someone else passing by on my website.</p>
 <p>So, today is about panes, or more commonly called <code>splits</code> or <code>split panes</code>. Knowing how to browse around panes will accelerate your coding process, so I believe it’s a good feature to add to your arsenal.</p>
-<p>If you’re not comfortable with Vim yet, please take some time to <a href="https://danielmiessler.com/study/vim/#gs.VnumRK0" target="_blank" rel="external">read this amazing article</a> by <a href="https://danielmiessler.com/" target="_blank" rel="external">Daniel Miessler</a>.</p>
+<p>If you’re not comfortable with Vim yet, please take some time to <a href="https://danielmiessler.com/study/vim/#gs.VnumRK0" target="_blank" rel="noopener">read this amazing article</a> by <a href="https://danielmiessler.com/" target="_blank" rel="noopener">Daniel Miessler</a>.</p>
 <p><strong>This article is not for total Vim beginners.</strong> So make sure you read the one linked above.</p>
 <p>Let’s not waste time and get right to it.</p>
 <h2 id="Creating-panes"><a href="#Creating-panes" class="headerlink" title="Creating panes"></a>Creating panes</h2><ul>
@@ -236,9 +237,9 @@
 <h2 id="Bonus"><a href="#Bonus" class="headerlink" title="Bonus"></a>Bonus</h2><p>That’s all for today lad! Now if you want more speed, keep reading.</p>
 <p>This section is more about personal preferences, take them with a grain of salt and modify them to your liking.</p>
 <h3 id="Make-Vim-open-panes-more-naturally"><a href="#Make-Vim-open-panes-more-naturally" class="headerlink" title="Make Vim open panes more naturally"></a>Make Vim open panes more naturally</h3><p>Normally Vim opens new horizontal panes above and new vertical panes on the left. I don’t like this and I believe it should be the opposite. Which is why I add those two lines to my <code>.vimrc</code>.</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">" Open new panes on the right (:vsp) and below (:sp) instead of the default left and top</span></div><div class="line"><span class="keyword">set</span> splitright</div><div class="line"><span class="keyword">set</span> splitbelow</div></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">" Open new panes on the right (:vsp) and below (:sp) instead of the default left and top</span></span><br><span class="line"><span class="keyword">set</span> splitright</span><br><span class="line"><span class="keyword">set</span> splitbelow</span><br></pre></td></tr></table></figure>
 <h3 id="Faster-pane-navigation"><a href="#Faster-pane-navigation" class="headerlink" title="Faster pane navigation"></a>Faster pane navigation</h3><p>I got used to the default way of navigating between panes, but I felt like I could go faster, so here’s what I added to my <code>.vimrc</code>:</p>
-<figure class="highlight vim"><figcaption><span>.vimrc</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">" ...</span></div><div class="line"></div><div class="line"><span class="comment">" Making browsing split panes great again!</span></div><div class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-H&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-H&gt;</span></div><div class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-J&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-J&gt;</span></div><div class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-K&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-K&gt;</span></div><div class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-L&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-L&gt;</span></div><div class="line"></div><div class="line"><span class="comment">" ...</span></div></pre></td></tr></table></figure>
+<figure class="highlight vim"><figcaption><span>.vimrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">" ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">" Making browsing split panes great again!</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-H&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-H&gt;</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-J&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-J&gt;</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-K&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-K&gt;</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-L&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-L&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">" ...</span></span><br></pre></td></tr></table></figure>
 <p>What this does is, instead of just <code>Ctrl + w + j</code> to go to the pane below, as an example, you can now do <code>Ctrl + j</code> too. Way shorter.</p>
 <h3 id="Mixing-panes-with-tabs"><a href="#Mixing-panes-with-tabs" class="headerlink" title="Mixing panes with tabs"></a>Mixing panes with tabs</h3><p>Panes are great on their own, what if I told you, adding tabs to the mix makes the experience even better? Let’s see it in action.</p>
 <ul>
@@ -252,17 +253,17 @@
 </ul>
 <p>Have a look at this quick demo:</p>
 <p><img src="/images/vim-tricks/panes-and-tabs.gif" alt="panes-and-tabs"></p>
-<h3 id="NERDtree"><a href="#NERDtree" class="headerlink" title="NERDtree"></a>NERDtree</h3><p>As you can see from the GIF above, I’m using the <a href="https://github.com/scrooloose/nerdtree" target="_blank" rel="external">NERDtree</a> plugin. If you don’t know what it is, it’s a file system explorer, just like the default sidebar in Sublime Text or other popular text editors.</p>
+<h3 id="NERDtree"><a href="#NERDtree" class="headerlink" title="NERDtree"></a>NERDtree</h3><p>As you can see from the GIF above, I’m using the <a href="https://github.com/scrooloose/nerdtree" target="_blank" rel="noopener">NERDtree</a> plugin. If you don’t know what it is, it’s a file system explorer, just like the default sidebar in Sublime Text or other popular text editors.</p>
 <p>This plugin makes a really great use of panes, so I thought I’d mention it.</p>
-<p>In their <a href="https://github.com/scrooloose/nerdtree#faq" target="_blank" rel="external">F.A.Q section</a>, they give you some great configuration commands to get started. Which is what I did, and added them in my own <code>.vimrc</code>.</p>
-<p>Have a <a href="https://github.com/R4meau/dotfiles/blob/master/.vimrc#L76" target="_blank" rel="external">look here</a> at my own <code>.vimrc</code>.</p>
+<p>In their <a href="https://github.com/scrooloose/nerdtree#faq" target="_blank" rel="noopener">F.A.Q section</a>, they give you some great configuration commands to get started. Which is what I did, and added them in my own <code>.vimrc</code>.</p>
+<p>Have a <a href="https://github.com/R4meau/dotfiles/blob/master/.vimrc#L76" target="_blank" rel="noopener">look here</a> at my own <code>.vimrc</code>.</p>
 <h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>Phew! That was good. Right? Well I hope so. Vim is a powerful tool. I hope you felt the same power I felt after learning those tricks.</p>
 <p>Being able to browse easily around it will make you faster while increasing your productivity. On top of that, you get to look cool for doing those so easily with your keyboard.</p>
 <p>But remember, Vim is just a tool, try other tools to see if they fit the job ;)</p>
 <p>Stay tuned for more, as my Vim journey to mastery has only just begun.</p>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>A Vim Tutorial and Primer: <a href="https://danielmiessler.com/study/vim/#gs.VnumRK0" target="_blank" rel="external">Daniel Miessler</a></p>
-<p>Vim Splits - Move Faster and More Naturally: <a href="https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally" target="_blank" rel="external">Toughtbot</a></p>
-<p>Thanks for reading, for quick replies, <a href="https://twitter.com/r4meau" target="_blank" rel="external">follow me on Twitter</a> and tweet me a “Hi!”. I’ll definitely DM you.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>A Vim Tutorial and Primer: <a href="https://danielmiessler.com/study/vim/#gs.VnumRK0" target="_blank" rel="noopener">Daniel Miessler</a></p>
+<p>Vim Splits - Move Faster and More Naturally: <a href="https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally" target="_blank" rel="noopener">Toughtbot</a></p>
+<p>Thanks for reading, for quick replies, <a href="https://twitter.com/r4meau" target="_blank" rel="noopener">follow me on Twitter</a> and tweet me a “Hi!”. I’ll definitely DM you.</p>
 
   </div>
 </article>
